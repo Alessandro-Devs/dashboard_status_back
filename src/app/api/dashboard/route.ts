@@ -39,8 +39,12 @@ export async function GET(request: NextRequest) {
 
     if (!snapshot) {
       return NextResponse.json(
-        { error: "No existen datos para la fecha solicitada." },
-        { status: 404, headers: corsHeaders(request.headers.get("origin")) },
+        {
+          snapshot: null,
+          data: null,
+          message: "No existen datos para la fecha solicitada.",
+        },
+        { status: 200, headers: corsHeaders(request.headers.get("origin")) },
       );
     }
 
